@@ -4,13 +4,17 @@
 #include <stdint.h>
 
 typedef struct {
-    uint8_t memory[4096];
-    uint8_t V[16];
-    uint16_t I;
-    uint16_t pc;
-    uint16_t stack[16]; // Ensure this is exactly like this
-    uint8_t sp; // Ensure this is exactly like this
-    uint8_t gfx[64 * 32]; // 64x32 display buffer
+    uint8_t  memory[4096];
+    uint8_t  V[16];      // General purpose registers
+    uint16_t I;          // Index register
+    uint16_t pc;         // Program counter
+    uint16_t stack[16];  // Stack
+    uint8_t  sp;         // Stack pointer
+    uint8_t  gfx[64 * 32]; // Graphics buffer
 } Chip8;
+
+// Function prototypes
+void initialize(Chip8* chip8);
+int  load_rom(Chip8* chip8, const char* filename);
 
 #endif
